@@ -45,7 +45,6 @@ int main()
 	aptExit();
 	srvExit();
 
-	// Return to hbmenu
 	return 0;
 }
 
@@ -53,26 +52,12 @@ int main()
 void audio_load(const char *audio){
 
 	FILE *file = fopen(audio, "rb");
-
-	// seek to end of file
 	fseek(file, 0, SEEK_END);
-
-	// file pointer tells us the size
 	off_t size = ftell(file);
-
-	// seek back to start
 	fseek(file, 0, SEEK_SET);
-
-	//allocate a buffer
 	buffer = linearAlloc(size);
-
-	//read contents !
 	off_t bytesRead = fread(buffer, 1, size, file);
-	//u8 test = &buffer;
-
-	//close the file because we like being nice and tidy
 	fclose(file);
-
 	csndPlaySound(8, SOUND_FORMAT_16BIT | SOUND_REPEAT, 48000, 1, 0, buffer, buffer, size);
 	linearFree(buffer);
 }
