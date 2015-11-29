@@ -32,8 +32,8 @@ SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
 
-APP_TITLE       := Rogue3DS
-APP_DESCRIPTION := Rogue Development test
+APP_TITLE       := Sound Example
+APP_DESCRIPTION := Sound Example for 3DS
 APP_AUTHOR      := clank201
 
 #---------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=3dsx.specs -g $(ARCH) -Wl,-Map,$(notdir $*.map)
 
-LIBS	:= -lsf2d -lctru -lm
+LIBS	:= -lctru -lm
 
 #---------------------------------------------------------------------------------
 # list of directories containing libraries, this must be the top level containing
