@@ -1,6 +1,4 @@
 #include <3ds.h>
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
 
 
