@@ -1,7 +1,6 @@
 #include <3ds.h>
 #include <stdio.h>
-
-
+#include <string.h>
 u8* buffer;
 u32 size;
 
@@ -14,14 +13,13 @@ int main()
 	// Inits
 	srvInit();
 	aptInit();
-	hidInit(NULL);
+	hidInit();
 	bool stop = 0;
 	
 
 	csndInit();//start Audio Lib
 	u32 kDown;
 	
-
 	while (aptMainLoop()){
 		
 		hidScanInput();
@@ -47,6 +45,7 @@ int main()
 }
 
 
+
 void audio_load(const char *audio){
 
 	FILE *file = fopen(audio, "rb");
@@ -63,6 +62,6 @@ void audio_stop(void){
 	csndExecCmds(true);
 	CSND_SetPlayState(0x8, 0);
 	memset(buffer, 0, size);
-	GSPGPU_FlushDataCache(NULL, buffer, size);
+	GSPGPU_FlushDataCache(buffer, size);
 	linearFree(buffer);
 }
